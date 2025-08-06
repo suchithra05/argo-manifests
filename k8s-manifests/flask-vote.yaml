@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: suchithra05/voting-app:c82a9aa2ca2e146bd1622e24700e79eb2f57f48b
+        image: suchithra05/voting-app:020a7ee5fa05f23be52784b60d9e37a1e8a4cf11
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
