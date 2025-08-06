@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: voting-app
+  labels:
+    app: voting-app
+spec:
+  replicas: 2
+  strategy:
+    blueGreen:
+      activeService: voting-app-active
+      previewService: voting-app-preview
+      autoPromotionEnabled: false
+  selector:
+    matchLabels:
+      app: voting-app
+  template:
+    metadata:
+      labels:
+        app: voting-app
+    spec:
+      containers:
+      - name: voting-app
+        image: suchithra05/voting-app:latest  # This gets updated by GitHub Actions
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
