@@ -1,0 +1,46 @@
+name: Build and Push Docker Image, Update YAML
+
+on:
+  push:
+    branches:
+      - main  # or main or any branch you want
+
+env:
+  IMAGE_NAME: suchithra05/voting-app
+  DEPLOYMENT_FILE: k8s-manifests/flask-vote.yaml
+
+jobs:
+  build-push-update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      run: |
+        IMAGE_TAG=${{ github.sha }}
+        docker build -t $IMAGE_NAME:$IMAGE_TAG ./apps
+        docker push $IMAGE_NAME:$IMAGE_TAG
+        echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+
+    - name: Update deployment YAML with new image tag
+      run: |
+        sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:${{ env.IMAGE_TAG }}|" $DEPLOYMENT_FILE
+
+    - name: Commit and push updated deployment.yaml
+      run: |
+        git config user.name "suchithra05"
+        git config user.email "suchithraee1999@gmail.com"
+        git add $DEPLOYMENT_FILE
+        git diff --cached --quiet || git commit -m "Update image tag to $IMAGE_TAG"
+        git push origin ${{ github.ref_name }}
