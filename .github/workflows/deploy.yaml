@@ -5,6 +5,9 @@ on:
     branches:
       - main  # or main or any branch you want
 
+permissions:
+  contents: write
+
 env:
   IMAGE_NAME: suchithra05/voting-app
   DEPLOYMENT_FILE: k8s-manifests/flask-vote.yaml
