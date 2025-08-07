@@ -21,7 +21,7 @@ spec:
             - containerPort: 8080
           env:
             - name: REDIS_HOST
-              value: "redis"
+              value: redis
   strategy:
     blueGreen:
       activeService: voting-app-active
