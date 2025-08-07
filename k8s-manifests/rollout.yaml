@@ -6,11 +6,6 @@ metadata:
     app: voting-app
 spec:
   replicas: 2
-  strategy:
-    blueGreen:
-      activeService: voting-app-active
-      previewService: voting-app-preview
-      autoPromotionEnabled: false
   selector:
     matchLabels:
       app: voting-app
@@ -20,8 +15,15 @@ spec:
         app: voting-app
     spec:
       containers:
-      - name: voting-app
-        image: suchithra05/voting-app:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
+        - name: voting-app
+          image: suchithra05/voting-app:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REDIS_HOST
+              value: "redis"
+  strategy:
+    blueGreen:
+      activeService: voting-app-active
+      previewService: voting-app-preview
+      autoPromotionEnabled: false
