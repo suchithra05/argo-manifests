@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: suchithra05/voting-app:latest  # This gets updated by GitHub Actions
+        image: suchithra05/voting-app:c82a9aa2ca2e146bd1622e24700e79eb2f57f48b
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
