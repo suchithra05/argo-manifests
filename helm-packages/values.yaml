@@ -2,7 +2,7 @@ activeColor: blue  # Change to green to switch traffic
 
 votingApp:
   imageBlue: suchithra05/voting-app:e5c1002dda0f496bbdcb2fe7c77d7b75ff0ed9f5
-  imageGreen: suchithra05/voting-app:latest
+  imageGreen: suchithra05/voting-app:eb986dffabc5d17e8590622d8d6d678cf6e838b2
   replicas: 2
   serviceType: NodePort
   nodePort: 30007
