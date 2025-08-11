@@ -1,4 +1,4 @@
-activeColor: blue  # Change to 'green' to switch traffic
+activeColor: green  # Change to 'green' to switch traffic
 
 votingApp:
   imageBlue: suchithra05/voting-app:e5c1002dda0f496bbdcb2fe7c77d7b75ff0ed9f5
