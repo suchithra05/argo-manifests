@@ -3,7 +3,7 @@ activeColor: blue  # Change to green to switch traffic
 votingApp:
   imageBlue: suchithra05/voting-app:latest
   imageGreen: suchithra05/voting-app:latest
-  replicas: 1
+  replicas: 2
   serviceType: NodePort
   nodePort: 30007
   containerPort: 8080
@@ -12,5 +12,5 @@ votingApp:
 
 redis:
   image: redis:7.2
-  replicas: 1
+  replicas: 2
   servicePort: 6379
