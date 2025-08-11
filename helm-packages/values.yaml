@@ -4,7 +4,7 @@ votingApp:
   imageBlue: suchithra05/voting-app:e5c1002dda0f496bbdcb2fe7c77d7b75ff0ed9f5
   imageGreen: suchithra05/voting-app:eb986dffabc5d17e8590622d8d6d678cf6e838b2
   replicasBlue: 2       # Number of pods for blue deployment when active
-  replicasGreen: 2      # Number of pods for green deployment when active
+  replicasGreen: 0      # Number of pods for green deployment when active
   serviceType: NodePort
   nodePort: 30007
   containerPort: 8080
