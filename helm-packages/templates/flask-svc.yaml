@@ -6,6 +6,7 @@ spec:
   type: {{ .Values.votingApp.serviceType }}
   selector:
     app: voting-app
+    color: {{ .Values.activeColor }}   # Only change this to switch traffic
   ports:
     - protocol: TCP
       port: 80
