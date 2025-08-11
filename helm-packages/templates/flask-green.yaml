@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-green
+  labels:
+    app: voting-app
+    color: green
+spec:
+  replicas: {{ .Values.votingApp.replicas }}
+  selector:
+    matchLabels:
+      app: voting-app
+      color: green
+  template:
+    metadata:
+      labels:
+        app: voting-app
+        color: green
+    spec:
+      containers:
+      - name: voting-app
+        image: {{ .Values.votingApp.imageGreen }}
+        ports:
+        - containerPort: {{ .Values.votingApp.containerPort }}
+        envFrom:
+        - configMapRef:
+            name: voting-app-config
