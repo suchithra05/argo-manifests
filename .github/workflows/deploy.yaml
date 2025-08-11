@@ -1,9 +1,9 @@
 name: Build and Push Docker Image, Update YAML
 
-#on:
-  #push:
-    #branches:
-      #- main  # or main or any branch you want
+on:
+  push:
+    branches:
+      - main  # or main or any branch you want
 
 permissions:
   contents: write
