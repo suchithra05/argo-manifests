@@ -10,7 +10,7 @@ permissions:
 
 env:
   IMAGE_NAME: suchithra05/voting-app
-  DEPLOYMENT_FILE: helm-packages/flask-green.yaml
+  DEPLOYMENT_FILE: helm-packages/templates/flask-green.yaml
 
 jobs:
   build-push-update:
