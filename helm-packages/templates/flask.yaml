@@ -6,7 +6,7 @@ metadata:
     app: voting-app
     color: blue
 spec:
-  replicas: {{ .Values.votingApp.replicas }}
+  replicas: {{ if eq .Values.activeColor "blue" }}{{ .Values.votingApp.replicasBlue }}{{ else }}0{{ end }}
   selector:
     matchLabels:
       app: voting-app
@@ -25,4 +25,3 @@ spec:
         envFrom:
         - configMapRef:
             name: voting-app-config
-

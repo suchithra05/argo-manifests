@@ -6,9 +6,9 @@ spec:
   type: {{ .Values.votingApp.serviceType }}
   selector:
     app: voting-app
-    color: {{ .Values.activeColor }}   # Only change this to switch traffic
+    color: {{ .Values.activeColor }}    # Select pods only of active color
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: {{ .Values.votingApp.containerPort }}
-      nodePort: {{ .Values.votingApp.nodePort }}
+  - protocol: TCP
+    port: 80
+    targetPort: {{ .Values.votingApp.containerPort }}
+    nodePort: {{ .Values.votingApp.nodePort }}
